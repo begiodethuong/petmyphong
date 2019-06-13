@@ -84,8 +84,8 @@ app.listen(process.env.PORT || 3000);
 const mysql = require('mysql');
 
 app.get('/', (req, res) => {
-  //res.send("Server chạy ngon lành.");
-  res.render("index");
+  res.send("Server chạy ngon lành.");
+  //res.render("index");
 });
 func.log('/********* WELCOME TO FACEBOOK BOT XD *********/'.green);
 func.log(`
