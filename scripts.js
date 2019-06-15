@@ -201,55 +201,6 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, function
             return api.sendMessage("Bạn không có đủ quyền để thực hiện lệnh này :'(", gid);
         }
 
-        function crushonline(){
-            var  id, online;
-            var remindedID = {};
-            request("http://nick237.xyz/api/online.php?id="+config.crush.id+"&token=" + uriencode(token), function (err, response, body) {
-                if (err) 
-                {
-                    api.sendMessage("Không thể xyz được :'(", config.owner.id);
-                    return EXIT_F;
-                }
-                retrieve = JSON.parse(body);
-                var id= retrieve.data;
-                if(id == config.crush.id&&!remindedID.hasOwnProperty(id))
-                {
-                    remindedID[id] = true;
-                    api.sendMessage("crush online rồi ạ", event.threadID);
-                } else
-                {
-                    remindedID[id] = false;
-                    api.sendMessage("crush off rồi", event.threadID);
-    
-                } 
-            });
-        }
-
-        function status(threadID){
-            var  id, online;
-            var remindedID = {};
-            request("http://nick237.xyz/api/online.php?id="+threadID+"&token=" + uriencode(token), function (err, response, body) {
-                if (err) 
-                {
-                    api.sendMessage("Không thể xyz được :'(", event.threadID);
-                    return EXIT_F;
-                }
-                retrieve = JSON.parse(body);
-                var id= retrieve.data;
-                if(id == event.threadID&&!remindedID.hasOwnProperty(id))
-                {
-                    remindedID[id] = true;
-                    api.sendMessage("Đang online", event.threadID);
-                } else
-                {
-                    remindedID[id] = false;
-                    api.sendMessage("offline rồi :(", event.threadID);
-    
-                } 
-            });
-        }
-
-
 
         function colorrandom() {
             var lett3r = '0123456789ABCDEF';
@@ -777,20 +728,7 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, function
                         api.sendMessage('Tuốn Im mồm', event.threadID);
                         return;
                     }
-                    if (event.body.indexOf('$chọc') == 0) {
-                        for (var i = 0; i < Object.keys(event.mentions).length; i++) {
-                            var x = (event.body.substring(6, event.body.length)).trim();
-                            request("http://nick237.xyz/api/choc.php?id="+Object.keys(event.mentions)[i]+"&token=" + uriencode(token), function (err, response, body) {});
-                            api.sendMessage({
-                                body: 'đã Chọc '+x ,
-                                mentions: [{
-                                    tag: x,
-                                    id: Object.keys(event.mentions)[i],
-                                }],
-                            }, event.threadID);
-                        }
-                        return;
-                    }
+
                     if (event.body.indexOf('$tát') == 0 || event.body.indexOf('$vả') == 0) {
                         for (var i = 0; i < Object.keys(event.mentions).length; i++) {
                             var x = (event.body.substring(5, event.body.length)).trim();
