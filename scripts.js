@@ -709,7 +709,8 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, function
                     if (event.body.indexOf('$talk') == 0) {
                         var talk = (event.body.substring(4, event.body.length)).trim();
                         request(simsimi + uriencode(talk), function (err, response, body) {
-                            api.sendMessage(body, event.threadID);
+                            retrieve = JSON.parse(response.body);
+                            api.sendMessage(retrieve.text, event.threadID);
                             return EXIT_S;
                         });
                         return EXIT_S;
