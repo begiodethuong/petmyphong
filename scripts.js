@@ -855,7 +855,7 @@ login({appState: JSON.parse(fs.readFileSync('appstate.json', 'utf8'))}, function
                     //Bad words filter ####
                     if (event.body === '$help') {
                         api.sendMessage({
-                            body: 'Chào ' + name + ' các lệnh hiện có thể sử dụng đây  http://petmyphong.herokuapp.com/',
+                            body: 'Chào ' + name + ' các lệnh hiện có thể sử dụng đây  https://cmtpet.herokuapp.com',
                             mentions: [{
                                 tag: name,
                                 id: event.senderID,
